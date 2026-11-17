@@ -186,7 +186,10 @@ body {
     .stat-pill.key { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; font-weight: 700; }
     .wx-highlight { font-size: 1.2em; font-weight: 700; color: #d84315; text-align: center; margin-bottom: 2px; }
     .compliance-matrix-wrap { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-top: 14px; }
-    .matrix-section-header { margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    .matrix-section-header { cursor: pointer; list-style: none; position: relative; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding: 0 52px 8px 0; }
+    .matrix-section-header::-webkit-details-marker { display: none; }
+    .matrix-section-header::after { content: '展开 ▾'; position: absolute; top: 0; right: 0; color: #64748b; font-size: 11px; font-weight: 600; white-space: nowrap; }
+    .compliance-matrix-wrap[open] > .matrix-section-header::after { content: '收起 ▴'; }
     .matrix-title-main { display: flex; align-items: center; gap: 6px; color: #003366; font-size: 14px; font-weight: bold; }
     .matrix-title-en { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; margin-left: 6px; }
     .matrix-title-desc { font-size: 12px; color: #64748b; margin-top: 3px; }
@@ -271,6 +274,7 @@ body {
         .col-right { background: #fffcf5 !important; }
         .box { box-shadow: none; margin-bottom: 3px; break-inside: auto; }
         .dashboard-wrap, .phase-sep, .sc-head { break-inside: avoid; }
+        .compliance-matrix-wrap:not([open]) > :not(.matrix-section-header) { display: block !important; }
         /* 控制阶段分组内的元素不被随意分页 */
         .brief, .sim, .wx, .atc, .tem, .maneuver {
             break-inside: avoid;
@@ -285,3 +289,5 @@ body {
     .toolbar-btn.green  { background:#4CAF50; }
     .toolbar-btn.blue   { background:#2196F3; }
     .toolbar-btn.orange { background:#FF9800; }
+    .toolbar-btn.red    { background:#ef4444; }
+    @media print { .toolbar-wrap { display: none !important; } }
